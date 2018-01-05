@@ -1,3 +1,4 @@
+baseURL = "https://localhost"
 languageCode = "en-en"
 title = "My Hugo Test"
 theme = "simple-a"
