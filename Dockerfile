@@ -16,6 +16,7 @@ WORKDIR /hugo-site
 
 # Mount volume to host
 VOLUME /hugo-site
+VOLUME /static-site
 
 # Expose default hugo port
 EXPOSE 1313
