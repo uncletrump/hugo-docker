@@ -90,11 +90,13 @@ $ docker run --name my-hugo -v $(pwd)/site-sample:/hugo-site -v $(pwd)/public:/s
 ```
 
 ## How to Play it
-In v0.1, base url is defined as http://localhost:1313 in Dockerfile. Once you run the container, you can check the sample at http://localhost:1313/ at once. However, it is hard to output static sites.
+In v0.1, base url is defined as http://localhost:1313 in Dockerfile. Once you run the container, you can check the sample at http://localhost:1313/ at once. However, it is hard to output static sites. Hugo version: 0.32.1
 
-In v0.2, the container will run `run.sh` in your hugo directory (e.g. site-sample in this case). If there not exists `run.sh` in the directory, the container will open a terminal and you can easily run hugo command in the terminal.
+In v0.2, the container will run `run.sh` in your hugo directory (e.g. site-sample in this case). If there not exists `run.sh` in the directory, the container will open a terminal and you can easily run hugo command in the terminal. Hugo version: 0.32.1
 
-In v0.3, you can manage the place where to put the static sites.
+In v0.3, you can manage the place where to put the static sites. Hugo version: 0.32.1
+
+In v0.46, Hugo version is 0.46. == latest
 
 In this sample, there exists a `run.sh`. You can put frequently used commands in this file, comment them and uncomment the one you want to use.
 
