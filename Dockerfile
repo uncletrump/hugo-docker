@@ -26,7 +26,8 @@ EXPOSE 1313
 # CMD hugo server -b ${HUGO_BASE_URL} --bind=0.0.0.0
 # CMD ["/bin/sh"]
 
-COPY start.sh /start.sh
-CMD ["/start.sh"]
+# COPY start.sh /start.sh
+# CMD ["/start.sh"]
+ENTRYPOINT ["hugo"]
 
 

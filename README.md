@@ -29,13 +29,13 @@ Please check the [official website](https://gohugo.io/) for more information abo
 There are two ways to get the docker image. One is to pull it from docker hub, the other is to build it by yourself. 
 
 ### From Docker Hub
-The compressed size of the image on Docker Hub is only 32MB. 
+[Here](https://hub.docker.com/r/orianna/hugo/) is the image on the Docker Hub. The compressed size is only 32MB. 
 You can simply pull the latest image by:
 ```shell
-$ docker pull orianna/hugo-docker-dev
+$ docker pull orianna/hugo
 ```
 
-Check the image, and this image is only 94.0MB now:
+Check the image, and this image is only 85.3MB now:
 ```shell
 $ docker images
 ```
@@ -68,7 +68,7 @@ $ docker images
 ## Run the Container
 Run the docker container:
 ```shell
-$ docker run --name container-name -v your-site-source-path:/hugo-site -v your-static-site-path:/static-site -p 1313:1313 --rm -it your/image-name:your-tag 
+$ docker run --name container-name -v your-site-source-path:/hugo-site -v your-static-site-path:/static-site -p 1313:1313 --rm -it your/image-name:your-tag [command] [flags]
 ```
 `--name` defines the name of the container.
 
@@ -86,19 +86,29 @@ $ docker run --name container-name -v your-site-source-path:/hugo-site -v your-s
 
 e.g.
 ```shell
-$ docker run --name my-hugo -v $(pwd)/site-sample:/hugo-site -v $(pwd)/public:/static-site -p 1313:1313 --rm -it orianna/hugo-docker-dev:latest
+$ docker run --name my-hugo -v $(pwd)/site-sample:/hugo-site -v $(pwd)/public:/static-site -p 1313:1313 --rm -it orianna/hugo:latest
 ```
 
-## How to Play it
-In v0.1, base url is defined as http://localhost:1313 in Dockerfile. Once you run the container, you can check the sample at http://localhost:1313/ at once. However, it is hard to output static sites. Hugo version: 0.32.1
+To simplify it, you can config alias in `~/.profile` as follows:
+```shell
+alias hugo="docker run -it --rm -v \$(pwd)/site-sample:/hugo-site -v $(pwd)/public:/static-site -p 1313:1313 orianna/hugo:latest"
+```
 
-In v0.2, the container will run `run.sh` in your hugo directory (e.g. site-sample in this case). If there not exists `run.sh` in the directory, the container will open a terminal and you can easily run hugo command in the terminal. Hugo version: 0.32.1
+With this alias, you can use the dart-sass image as if you use `hugo` command locally:
+```shell  
+$ hugo version                      
+$ hugo -h                      
+```
 
-In v0.3, you can manage the place where to put the static sites. Hugo version: 0.32.1
+If you want to use shell in the container interactively, you can enter:
+```shell
+$ docker run --name my-hugo -v $(pwd)/site-sample:/hugo-site -v $(pwd)/public:/static-site -p 1313:1313 --rm -it --entrypoint sh orianna/hugo:latest
+```
 
-In v0.46, Hugo version is 0.46. == latest
+## Tag Version
+### v0.46: == latest
+Hugo: v0.46. Alpine: v3.8
 
-In this sample, there exists a `run.sh`. You can put frequently used commands in this file, comment them and uncomment the one you want to use.
 
  
 
